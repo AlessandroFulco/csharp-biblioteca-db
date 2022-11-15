@@ -61,6 +61,25 @@ public static class Database
         return id;
     }
 
+    public static void ModificaDocumento( string codice, SqlConnection connessione, string codice2, string titolo, DateTime anno, string settore, int stato, string scaffale, string autore)
+    {
+        int id = RicercaDocumento(codice, connessione);
+
+        string query = "UPDATE documenti SET codice=@Codice, titolo=@Titolo, anno=@Anno, settore=@Settore, stato=@Stato, scaffale=@Scaffale, autore=@Autore  WHERE id = " + id;
+        SqlCommand cmd = new SqlCommand(query, connessione);
+        cmd.Parameters.Add(new SqlParameter("@Codice", codice2));
+        cmd.Parameters.Add(new SqlParameter("@Titolo", titolo));
+        cmd.Parameters.Add(new SqlParameter("@Anno", anno));
+        cmd.Parameters.Add(new SqlParameter("@Settore", settore));
+        cmd.Parameters.Add(new SqlParameter("@Stato", stato));
+        cmd.Parameters.Add(new SqlParameter("@Scaffale", scaffale));
+        cmd.Parameters.Add(new SqlParameter("@Autore", autore));
+
+        int righeAggiungte = cmd.ExecuteNonQuery();
+
+    }
+
+
     public static void AggiungiPrestito(string nome, string cognome, DateTime data_inizio, DateTime data_fine, string tipo, int documento_id , SqlConnection connessione)
     {
         string query = "INSERT INTO prestiti (nome, cognome, data_inizio, data_fine, tipo, documento_id) VALUES (@nome, @cognome, @data_inizio, @data_fine, @tipo, @documento_id)";

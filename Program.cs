@@ -44,9 +44,10 @@ while (continua)
     Console.WriteLine("     5. Lista prestiti");
     Console.WriteLine("     6. Stampa lista documenti");
     Console.WriteLine("     7. Aggiungi un libro al database");
-    Console.WriteLine("     8. Aggiungi un prestito al database");
+    Console.WriteLine("     8. Modifica un libro al database");
+    Console.WriteLine("     9. Aggiungi un prestito al database");
 
-    Console.WriteLine("     9. Esci");
+    Console.WriteLine("     19. Esci");
 
     int inputUtente = Convert.ToInt32(Console.ReadLine());
 
@@ -124,13 +125,52 @@ while (continua)
             break;
 
         case 8:
+            //modifica del documento
+            Console.WriteLine("Sezione: Modifica un libro");
+
+            SqlConnection connessione3 = Database.Connetti();
+            Console.Write("Inserisci il codice del libro da modificare: ");
+            string codice2 = Console.ReadLine();
+
+            Console.Write("Inserisci il codice: ");
+            string codice = Console.ReadLine();
+
+            Console.Write("Inserisci il titolo del documento: ");
+            string titolo = Console.ReadLine();
+
+            Console.Write("Inserisci la data di pubblicazione: ");
+            DateTime data = DateTime.Parse(Console.ReadLine());
+
+            Console.Write("Inserisci il settore: ");
+            string settore = Console.ReadLine();
+
+            Console.Write("Inserisci [si/no] se è in prestito: ");
+            string statoStringa = Console.ReadLine();
+            int stato = 0;
+            if (statoStringa.ToLower() == "si")
+                stato = 1;
+
+            Console.Write("Inserisci lo scaffale: ");
+            string scaffale = Console.ReadLine();
+
+            Console.Write("Inserisci l'autore del libro: ");
+            string autore = Console.ReadLine();
+
+            Database.ModificaDocumento(codice2, connessione3, codice, titolo, data, settore, stato, scaffale, autore);
+
+
+            Database.Disconnetti(connessione3);
+
+            break;
+
+        case 9:
             Console.WriteLine("Sezione: aggiungi un prestito al database");
             SqlConnection connessione2 = Database.Connetti();
 
             Console.Write("Inserisci il codice del libro da prendere in prestito: ");
-            string codice = Console.ReadLine();
+            string codice4 = Console.ReadLine();
 
-            int idDocumento = Database.RicercaDocumento(codice, connessione2);
+            int idDocumento = Database.RicercaDocumento(codice4, connessione2);
 
             Console.Write("Inserisci il nome dell'intesatario del prestito: ");
             string nome = Console.ReadLine();
@@ -154,7 +194,7 @@ while (continua)
 
             break;
 
-        case 9:
+        case 10:
             continua = false;
             break;
 
