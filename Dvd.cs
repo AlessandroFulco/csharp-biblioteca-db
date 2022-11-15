@@ -37,6 +37,6 @@ public class Dvd : Documento
 
     public override string ToString()
     {
-        return Durata + ", " + base.ToString();
+        return "Durata: " + Durata + ", " + base.ToString();
     }
 }

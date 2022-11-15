@@ -151,16 +151,6 @@ public class Biblioteca
             return false;
     }
 
-    //TODO
-    //public bool RicercaPrestito(string nome, string cognome)
-    //{
-
-
-
-    //    return false;
-    //}
-
-
     //stampa prestito
     public void StampaPrestiti()
     {
@@ -169,5 +159,20 @@ public class Biblioteca
         {
             Console.WriteLine(prestito.ToString());
         }
+    }
+
+    public string ListaDocumenti()
+    {
+        string lista = "";
+        foreach(Libro documento in libroList)
+        {
+            lista += documento.ToString() + "\n";
+        }
+        foreach(Dvd documento in dvdList)
+        {
+            lista += documento.ToString() + "\n";
+        }
+
+        return lista;
     }
 }

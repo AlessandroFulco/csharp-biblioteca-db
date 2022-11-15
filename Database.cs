@@ -1,10 +1,14 @@
-﻿using System.Data.SqlClient;
+﻿using Microsoft.VisualBasic;
+using System.Data.SqlClient;
 
 public static class Database
 {
 
-    public static void Connetti(SqlConnection connessione)
+    public static SqlConnection Connetti()
     {
+        string stringaDiConnessione = "Data Source=localhost;Initial Catalog=db-biblioteca;Integrated Security=True";
+
+        SqlConnection connessione = new SqlConnection(stringaDiConnessione);
 
         try
         {
@@ -14,7 +18,7 @@ public static class Database
         {
             Console.WriteLine(e.Message);
         }
-
+        return connessione;
     }
 
     public static void Disconnetti(SqlConnection connessione)
@@ -22,7 +26,7 @@ public static class Database
         connessione.Close();
     }
 
-    public static void AggiungiDocumento(string codice, string titolo, DateTime anno, string settore, bool stato, string scaffale, string autore, SqlConnection connessione)
+    public static void AggiungiDocumento(string codice, string titolo, DateTime anno, string settore, int stato, string scaffale, string autore, SqlConnection connessione)
     {
         string query = "INSERT INTO documenti (codice, titolo, anno, settore, stato, scaffale, autore) VALUES (@codice, @titolo, @anno, @settore, @stato, @scaffale, @autore)";
 

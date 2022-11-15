@@ -37,6 +37,6 @@ public class Libro : Documento
 
     public override string ToString()
     {
-        return Pagine + ", " + base.ToString();
+        return "Pagine: " + Pagine + ", " + base.ToString();
     }
 }
