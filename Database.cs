@@ -43,6 +43,24 @@ public static class Database
 
     }
 
+    public static int RicercaDocumento(string codice, SqlConnection connessione)
+    {
+        string query = "SELECT Id FROM documenti WHERE codice=@Codice";
+
+        SqlCommand cmd = new SqlCommand(query, connessione);
+        cmd.Parameters.Add(new SqlParameter("@Codice", codice));
+
+        int id = 0;
+        using (SqlDataReader reader = cmd.ExecuteReader())
+        {
+            while (reader.Read())
+            {
+                id = reader.GetInt32(0);
+            }
+        }
+        return id;
+    }
+
     public static void AggiungiPrestito(string nome, string cognome, DateTime data_inizio, DateTime data_fine, string tipo, int documento_id , SqlConnection connessione)
     {
         string query = "INSERT INTO prestiti (nome, cognome, data_inizio, data_fine, tipo, documento_id) VALUES (@nome, @cognome, @data_inizio, @data_fine, @tipo, @documento_id)";

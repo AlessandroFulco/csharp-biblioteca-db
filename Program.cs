@@ -46,7 +46,7 @@ while (continua)
     Console.WriteLine("     7. Aggiungi un libro al database");
     Console.WriteLine("     8. Aggiungi un prestito al database");
 
-    Console.WriteLine("     7. Esci");
+    Console.WriteLine("     9. Esci");
 
     int inputUtente = Convert.ToInt32(Console.ReadLine());
 
@@ -120,10 +120,38 @@ while (continua)
             //Database.AggiungiDocumento()
 
             Database.Disconnetti(connessione);
-            
+
             break;
 
         case 8:
+            Console.WriteLine("Sezione: aggiungi un prestito al database");
+            SqlConnection connessione2 = Database.Connetti();
+
+            Console.Write("Inserisci il codice del libro da prendere in prestito: ");
+            string codice = Console.ReadLine();
+
+            int idDocumento = Database.RicercaDocumento(codice, connessione2);
+
+            Console.Write("Inserisci il nome dell'intesatario del prestito: ");
+            string nome = Console.ReadLine();
+            
+            Console.Write("Inserisci il cognome dell'intesatario del prestito: ");
+            string congome = Console.ReadLine();
+
+            Console.Write("Inserisci la data di inizio prestito: ");
+            DateTime data_inizio = DateTime.Parse(Console.ReadLine());
+            
+            Console.Write("Inserisci la data di fine prestito: ");
+            DateTime data_fine = DateTime.Parse(Console.ReadLine());
+            
+            Console.Write("Inserisci il tipo del documento: ");
+            string tipo = Console.ReadLine();
+
+
+            Database.AggiungiPrestito(nome, congome, data_inizio, data_fine, tipo, idDocumento, connessione2);
+
+            Database.Disconnetti(connessione2);
+
             break;
 
         case 9:
@@ -169,7 +197,6 @@ void CreaLibroDb(SqlConnection connessione)
 
 
 
-//using System.Data.SqlClient;
 
 //string stringaDiConnessione = "Data Source=localhost;Initial Catalog=db-biblioteca;Integrated Security=True";
 
@@ -178,8 +205,13 @@ void CreaLibroDb(SqlConnection connessione)
 
 //connessione.Open();
 
-//Database.AggiungiDocumento("3412", "prova", new DateTime(2022, 05, 06), "2A", true, "matematica", "alessandro", connessione);
+////Database.AggiungiDocumento("3412", "prova", new DateTime(2022, 05, 06), "2A", true, "matematica", "alessandro", connessione);
 
-//Database.AggiungiPrestito("alessandro", "Fulco", new DateTime(2022, 11, 11), new DateTime(2023, 11, 11), "libro", 1, connessione);
+////Database.AggiungiPrestito("alessandro", "Fulco", new DateTime(2022, 11, 11), new DateTime(2023, 11, 11), "libro", 1, connessione);
+
+////Console.WriteLine(Database.RicercaDocumento("12345", connessione));
+
+
+
 
 //connessione.Close();
