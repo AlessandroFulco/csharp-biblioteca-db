@@ -118,6 +118,8 @@ SqlConnection connessione = new SqlConnection(stringaDiConnessione);
 
 connessione.Open();
 
-Database.AggiungiDocumento("3412", "prova", new DateTime(2022, 06, 06), "2A", true, "matematica", "alessandro", connessione);
+Database.AggiungiDocumento("3412", "prova", new DateTime(2022, 05, 06), "2A", true, "matematica", "alessandro", connessione);
+
+Database.AggiungiPrestito("alessandro", "Fulco", new DateTime(2022, 11, 11), new DateTime(2023, 11, 11), "libro", 1, connessione);
 
 connessione.Close();

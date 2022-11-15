@@ -39,9 +39,19 @@ public static class Database
 
     }
 
-    public static void AggiungiPrestito(string nome, string cognome, DateOnly data_inizio, DateOnly data_fine, string tipo)
+    public static void AggiungiPrestito(string nome, string cognome, DateTime data_inizio, DateTime data_fine, string tipo, int documento_id , SqlConnection connessione)
     {
+        string query = "INSERT INTO prestiti (nome, cognome, data_inizio, data_fine, tipo, documento_id) VALUES (@nome, @cognome, @data_inizio, @data_fine, @tipo, @documento_id)";
 
+        SqlCommand cmd = new SqlCommand(query, connessione);
+        cmd.Parameters.Add(new SqlParameter("@nome", nome));
+        cmd.Parameters.Add(new SqlParameter("@cognome", cognome));
+        cmd.Parameters.Add(new SqlParameter("@data_inizio", data_inizio));
+        cmd.Parameters.Add(new SqlParameter("@data_fine", data_fine));
+        cmd.Parameters.Add(new SqlParameter("@tipo", tipo));
+        cmd.Parameters.Add(new SqlParameter("@documento_id", documento_id));
+
+        int righeAggiungte = cmd.ExecuteNonQuery();
     }
 
 
