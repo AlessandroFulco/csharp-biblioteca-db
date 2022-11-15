@@ -75,8 +75,19 @@ public static class Database
         cmd.Parameters.Add(new SqlParameter("@Scaffale", scaffale));
         cmd.Parameters.Add(new SqlParameter("@Autore", autore));
 
-        int righeAggiungte = cmd.ExecuteNonQuery();
+        int righeModificate = cmd.ExecuteNonQuery();
 
+    }
+
+    public static void EliminaDocumento(string codice, SqlConnection connessione)
+    {
+        int id = RicercaDocumento(codice, connessione);
+
+        string query = "DELETE FROM documenti WHERE id=@Id ";
+        SqlCommand cmd = new SqlCommand(query, connessione);
+        cmd.Parameters.Add(new SqlParameter("@id", id));
+
+        int righeEliminate = cmd.ExecuteNonQuery();
     }
 
 

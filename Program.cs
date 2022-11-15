@@ -45,9 +45,10 @@ while (continua)
     Console.WriteLine("     6. Stampa lista documenti");
     Console.WriteLine("     7. Aggiungi un libro al database");
     Console.WriteLine("     8. Modifica un libro al database");
-    Console.WriteLine("     9. Aggiungi un prestito al database");
+    Console.WriteLine("     9. Elimina un libro al database");
+    Console.WriteLine("     10. Aggiungi un prestito al database");
 
-    Console.WriteLine("     19. Esci");
+    Console.WriteLine("     11. Esci");
 
     int inputUtente = Convert.ToInt32(Console.ReadLine());
 
@@ -164,6 +165,19 @@ while (continua)
             break;
 
         case 9:
+            Console.WriteLine("Sezione: Elimina un libro");
+
+            SqlConnection connessione4 = Database.Connetti();
+            Console.Write("Inserisci il codice del libro da eliminare: ");
+            string codice5 = Console.ReadLine();
+
+            Database.EliminaDocumento(codice5, connessione4);
+            Database.Disconnetti(connessione4);
+
+            break;
+
+
+        case 10:
             Console.WriteLine("Sezione: aggiungi un prestito al database");
             SqlConnection connessione2 = Database.Connetti();
 
@@ -194,7 +208,7 @@ while (continua)
 
             break;
 
-        case 10:
+        case 11:
             continua = false;
             break;
 
