@@ -24,86 +24,100 @@
 */
 
 
-Biblioteca biblioteca = new Biblioteca();
+//Biblioteca biblioteca = new Biblioteca();
 
 
 
-bool continua = true;
-while (continua)
-{
-    //Benvenuto 
-    Console.WriteLine("Benvenuto");
-    Console.WriteLine("Scrivi una delle opzionis: ");
-    //funzioni possibili: crea prestito, cerca un libro o un dvd
-    Console.WriteLine("     1. Cerca un libro");
-    Console.WriteLine("     2. Cerca un dvd");
-    Console.WriteLine("     3. Crea un prestito per un libro");
-    Console.WriteLine("     4. Crea un prestito per un Dvd");
-    Console.WriteLine("     5. Lista prestiti");
-    Console.WriteLine("     6. Esci");
+//bool continua = true;
+//while (continua)
+//{
+//    //Benvenuto 
+//    Console.WriteLine("Benvenuto");
+//    Console.WriteLine("Scrivi una delle opzionis: ");
+//    //funzioni possibili: crea prestito, cerca un libro o un dvd
+//    Console.WriteLine("     1. Cerca un libro");
+//    Console.WriteLine("     2. Cerca un dvd");
+//    Console.WriteLine("     3. Crea un prestito per un libro");
+//    Console.WriteLine("     4. Crea un prestito per un Dvd");
+//    Console.WriteLine("     5. Lista prestiti");
+//    Console.WriteLine("     6. Esci");
 
-    string inputUtente = Console.ReadLine().ToLower();
+//    string inputUtente = Console.ReadLine().ToLower();
 
-    switch (inputUtente)
-    {
-        case "cerca un libro":
-            Console.WriteLine("Quale libro vuoi cercare?");
-            string libro = Console.ReadLine().ToLower();
-            Console.WriteLine(biblioteca.CercaLibro(libro).ToString());
-            libro = null;
-            break;
+//    switch (inputUtente)
+//    {
+//        case "cerca un libro":
+//            Console.WriteLine("Quale libro vuoi cercare?");
+//            string libro = Console.ReadLine().ToLower();
+//            Console.WriteLine(biblioteca.CercaLibro(libro).ToString());
+//            libro = null;
+//            break;
 
-        case "cerca un dvd":
-            Console.WriteLine("Quale dvd vuoi cercare?");
-            string dvd = Console.ReadLine().ToLower();
-            Console.WriteLine(biblioteca.CercaDvd(dvd).ToString());
-            break;
+//        case "cerca un dvd":
+//            Console.WriteLine("Quale dvd vuoi cercare?");
+//            string dvd = Console.ReadLine().ToLower();
+//            Console.WriteLine(biblioteca.CercaDvd(dvd).ToString());
+//            break;
 
-        case "crea un prestito per un libro":
-            //chiede il nome utente
-            Console.WriteLine("inserisci nome utente registrato");
-            string libroInputNomeUtente = Console.ReadLine(); 
-            //chiede il cognome utente
-            Console.WriteLine("inserisci cognome utente registrato");
-            string libroInputCognomeUtente = Console.ReadLine(); 
-            //chiede il libro per creare il prestito
-            Console.WriteLine("Quale libro vuoi prendere in prestito?");
-            string inputLibro = Console.ReadLine().ToLower();
-            bool prestitoLibro = biblioteca.CreaPrestitoLibro(libroInputNomeUtente, libroInputCognomeUtente, inputLibro);
-            if (prestitoLibro)
-                Console.WriteLine("Prestito avvenuto con successo");
-            else
-                Console.WriteLine("il libro è gia stato preso in prestito");
-            break;
-        
-        case "crea un prestito per un Dvd":
-            //chiede il nome utente
-            Console.WriteLine("inserisci nome utente registrato");
-            string dvdInputNomeUtente = Console.ReadLine();
-            //chiede il cognome utente
-            Console.WriteLine("inserisci cognome utente registrato");
-            string dvdInputCognomeUtente = Console.ReadLine();
-            //chiedere il dvd per creare il prestito
-            Console.WriteLine("Quale Dvd vuoi prendere in prestito?");
-            string inputDvd = Console.ReadLine().ToLower();
-            bool prestitoDvd = biblioteca.CreaPrestitoDvd(dvdInputNomeUtente, dvdInputCognomeUtente, inputDvd);
-            if (prestitoDvd)
-                Console.WriteLine("Prestito avvenuto con successo");
-            else
-                Console.WriteLine("il Dvd è gia stato preso in prestito");
-            break;
+//        case "crea un prestito per un libro":
+//            //chiede il nome utente
+//            Console.WriteLine("inserisci nome utente registrato");
+//            string libroInputNomeUtente = Console.ReadLine(); 
+//            //chiede il cognome utente
+//            Console.WriteLine("inserisci cognome utente registrato");
+//            string libroInputCognomeUtente = Console.ReadLine(); 
+//            //chiede il libro per creare il prestito
+//            Console.WriteLine("Quale libro vuoi prendere in prestito?");
+//            string inputLibro = Console.ReadLine().ToLower();
+//            bool prestitoLibro = biblioteca.CreaPrestitoLibro(libroInputNomeUtente, libroInputCognomeUtente, inputLibro);
+//            if (prestitoLibro)
+//                Console.WriteLine("Prestito avvenuto con successo");
+//            else
+//                Console.WriteLine("il libro è gia stato preso in prestito");
+//            break;
 
-        case "lista prestiti":
-            Console.WriteLine("Ecco la lista dei prestiti attivi");
-            biblioteca.StampaPrestiti();
-            break;
+//        case "crea un prestito per un Dvd":
+//            //chiede il nome utente
+//            Console.WriteLine("inserisci nome utente registrato");
+//            string dvdInputNomeUtente = Console.ReadLine();
+//            //chiede il cognome utente
+//            Console.WriteLine("inserisci cognome utente registrato");
+//            string dvdInputCognomeUtente = Console.ReadLine();
+//            //chiedere il dvd per creare il prestito
+//            Console.WriteLine("Quale Dvd vuoi prendere in prestito?");
+//            string inputDvd = Console.ReadLine().ToLower();
+//            bool prestitoDvd = biblioteca.CreaPrestitoDvd(dvdInputNomeUtente, dvdInputCognomeUtente, inputDvd);
+//            if (prestitoDvd)
+//                Console.WriteLine("Prestito avvenuto con successo");
+//            else
+//                Console.WriteLine("il Dvd è gia stato preso in prestito");
+//            break;
 
-        case "esci":
-            continua = false;
-            break;
+//        case "lista prestiti":
+//            Console.WriteLine("Ecco la lista dei prestiti attivi");
+//            biblioteca.StampaPrestiti();
+//            break;
 
-        default:
-            Console.WriteLine("opzione non disponibile");
-            break;
-    }
-}
+//        case "esci":
+//            continua = false;
+//            break;
+
+//        default:
+//            Console.WriteLine("opzione non disponibile");
+//            break;
+//    }
+//}
+
+
+using System.Data.SqlClient;
+
+string stringaDiConnessione = "Data Source=localhost;Initial Catalog=db-biblioteca;Integrated Security=True";
+
+
+SqlConnection connessione = new SqlConnection(stringaDiConnessione);
+
+connessione.Open();
+
+Database.AggiungiDocumento("3412", "prova", new DateTime(2022, 06, 06), "2A", true, "matematica", "alessandro", connessione);
+
+connessione.Close();
